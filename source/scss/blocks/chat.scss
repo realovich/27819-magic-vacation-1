@@ -185,4 +185,12 @@
 
 .chat__footer {
   margin-top: auto;
+  transform: translateX(100%);
+  opacity: 0;
+  transition-duration: .3s;
+}
+
+.active .chat__footer {
+  transform: translate(0);
+  opacity: 1;
 }
