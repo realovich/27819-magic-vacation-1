@@ -35,13 +35,16 @@
   &::before {
     @include center;
     content: "";
-    width: 100%;
-    height: 100%;
+    
     border-radius: 50%;
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
-    transition: .32s;
+
+    width: 0;
+    height: 0;
+    transition-timing-function: cubic-bezier(.89,.23,.44,1.2);
+    transition-duration: .32s;
   }
 
   svg {
@@ -85,6 +88,13 @@
       background-color: $c-purple;
       border-color: $c-purple;
     }
+  }
+}
+
+.loaded .social-block__toggler {
+  &::before {
+    width: 100%;
+    height: 100%;
   }
 }
 

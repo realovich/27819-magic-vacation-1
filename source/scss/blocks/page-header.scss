@@ -36,6 +36,11 @@
   width: 10rem;
   color: $c-light;
 
+  opacity: 0;
+  transform: translateX(-15px);
+  transition-timing-function: cubic-bezier(.5,.8,.5,1);
+  transition-duration: .32s;
+
   @media (min-width: $stop-scaling) {
     top: -5px;
     padding: 10px 0;
@@ -69,6 +74,11 @@
     width: 100%;
     height: auto;
   }
+}
+
+.loaded .page-header__logo {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .page-header__toggler {
@@ -130,6 +140,10 @@
 .page-header__nav {
   display: flex;
   align-items: center;
+  
+  opacity: 0;
+  transition-timing-function: cubic-bezier(.5,.8,.5,1);
+  transition-duration: .3s;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
@@ -168,6 +182,10 @@
       transform: translateX(0);
     }
   }
+}
+
+.loaded .page-header__nav {
+  opacity: 1;
 }
 
 .page-header__menu {
@@ -241,30 +259,27 @@
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
-    transition: color .3s;
+    transition: color .32s;
 
     &::before,
     &::after {
       content: "";
       position: absolute;
-      bottom: 0;
-      height: 2px;
-      transition: .3s;
-    }
-
-    &::before {
-      background-color: $c-purple;
       left: initial;
       width: 0;
       right: 0;
       display: block;
+      bottom: 0;
+      height: 2px;
+      transition: .32s;
+    }
+
+    &::before {
+      background-color: $c-purple;
     }
 
     &::after {
       background-color: $c-light;
-      display: none;
-      left: 0;
-      width: 100%;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         left: 0;
@@ -276,12 +291,6 @@
         left: 0;
         right: 0;
         background-color: $c-dark;
-      }
-    }
-
-    &.active {
-      &::after {
-        display: block;
       }
     }
 
@@ -301,6 +310,14 @@
         background-color: $c-purple;
       }
     }
+  }
+}
+
+.loaded .page-header__menu a.active {
+  &::after {
+    width: 100%;
+    right: initial;
+    left: 0;
   }
 }
 
